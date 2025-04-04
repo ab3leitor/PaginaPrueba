@@ -1,0 +1,385 @@
+:root {
+    --metal-dark: #2a2a2a;
+    --metal-medium: #4a4a4a;
+    --metal-light: #6a6a6a;
+    --metal-lighter: #e0e0e0;
+    --metal-accent: #1a1a1a;
+}
+
+body {
+    background-image: url(../Image/HD-wallpaper-anime-starry-sky-railroad-car-mood-anime-girl-scenic-falling-stars-night-anime.jpg);
+    background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    /* Fallback para imágenes muy grandes */
+    background-color: #2a2a2a;
+    /* Color similar al tono dominante de tu imagen */
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body::before {
+    background: linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1));
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Barra de Navegación */
+/* Estilos para el navbar */
+/* Estilos para el navbar */
+.navbar {
+    position: fixed;
+    top: -70px;
+    /* Inicialmente oculto */
+    width: 100%;
+    height: 60px;
+    background: #2c3e50;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: top 0.4s ease;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbar.visible {
+    top: 0;
+}
+
+.navbar:hover {
+    top: 0 !important;
+}
+
+.navbar-brand {
+    font-weight: 600;
+}
+
+.nav-link {
+    transition: all 0.3s ease;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.nav-links a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.nav-link:hover {
+    color: var(--metal-lighter) !important;
+}
+
+/* Secciones con transparencia oscura */
+section {
+    background-color: rgba(30, 30, 30, 0.849);
+    color: #f0f0f0;
+    padding: 80px 0; /* Aumenté el padding vertical */
+    margin: 30px auto; /* Más margen exterior */
+    width: 95%; /* Ancho ligeramente reducido */
+    border-radius: 15px; /* Bordes más redondeados */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Contenido de la sección */
+.section-content {
+    padding: 0 40px;
+    /* Espaciado horizontal interno */
+    margin: 0 auto;
+}
+
+/* Efecto hover más pronunciado */
+section:hover {
+    transform: translateY(-5px);
+    /* Efecto de levitación */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+section h2 {
+    color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    margin-bottom: 30px;
+    /* Más espacio debajo del título */
+    padding-bottom: 15px;
+    /* Espacio para la línea decorativa */
+    position: relative;
+    left: 0;
+    /* Eliminamos el desplazamiento lateral */
+    transform: none;
+    /* Eliminamos transformación previa */
+    width: 100%;
+    text-align: center;
+    /* Centrado opcional */
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    /* La línea comienza al 25% */
+    width: 50%;
+    /* Ocupa solo el 50% del ancho */
+    height: 2px;
+    background: rgba(42, 42, 42, 0.3);
+}
+
+section p {
+    color: #e0e0e0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Versión para móviles */
+@media (max-width: 768px) {
+    section {
+        padding: 50px 0;
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    .section-container {
+        padding: 0 20px;
+    }
+
+    section h2 {
+        margin-bottom: 20px;
+    }
+}
+
+
+/* Sobre Mí */
+.profile-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 3px solid var(--metal-medium);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Efectos hover unificados para cards */
+.skill-card,
+.tool-card {
+    background-color: rgba(50, 50, 50, 0.5);
+    color: #fff;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.skill-card::before,
+.tool-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--metal-dark), var(--metal-medium));
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.skill-card:hover,
+.tool-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    color: white !important;
+    border-color: transparent !important;
+}
+
+.skill-card:hover::before,
+.tool-card:hover::before {
+    opacity: 1;
+}
+
+.skill-card:hover .skill-icon,
+.tool-card:hover .skill-icon,
+.skill-card:hover h4,
+.tool-card:hover h4,
+.skill-card:hover p,
+.tool-card:hover p {
+    color: white !important;
+}
+
+/* Estilos para el carrusel e indicadores */
+.carousel-container {
+    position: relative;
+    height: 500px;
+    /* Ajusta según necesites */
+}
+
+.carousel-external-indicators {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 0 auto;
+    z-index: 10;
+}
+
+.carousel-external-indicators button {
+    width: 8px;
+    height: 8px;
+    border-radius: 10%;
+    border: none;
+    background: rgba(112, 111, 111, 0.5);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.carousel-external-indicators button.active {
+    background: rgb(0, 0, 0);
+    transform: scale(1.3);
+}
+
+/* Iconos de redes sociales */
+footer a {
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+footer a:hover {
+    transform: translateY(-3px);
+    color: var(--metal-lighter) !important;
+}
+
+/* Carrusel */
+.carousel-item img {
+    height: 400px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.carousel-caption {
+    background-color: rgba(42, 42, 42, 0.7);
+    border-radius: 5px;
+    padding: 15px;
+}
+
+/* Formulario */
+.form-control {
+    border: 1px solid var(--metal-light);
+}
+
+.form-control:focus {
+    border-color: var(--metal-medium);
+    box-shadow: 0 0 0 0.25rem rgba(74, 74, 74, 0.25);
+}
+
+.btn-primary {
+    background-color: var(--metal-medium);
+    border-color: var(--metal-medium);
+}
+
+.btn-primary:hover {
+    background-color: var(--metal-dark);
+    border-color: var(--metal-dark);
+}
+
+/* Pie de Página */
+footer {
+    background-color: var(--metal-dark) !important;
+    border-top: 3px solid var(--metal-medium);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    section {
+        padding: 40px 0;
+    }
+
+    .skill-card {
+        margin-bottom: 15px;
+    }
+}
+
+/* Controles de música */
+.music-controls {
+    z-index: 1030;
+    right: 0;
+    transition: all 0.3s ease;
+}
+
+/* Estilo base de los botones (más pequeños) */
+.music-btn {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    transform: scale(0.9);
+}
+
+/* Efecto hover - los botones crecen */
+.music-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+}
+
+/* Barra de volumen vertical */
+.vertical-slider {
+    -webkit-appearance: slider-vertical;
+    width: 30px;
+    height: 80px;
+    padding: 0 10px;
+    margin: 5px 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Mostrar barra cuando el contenedor está visible */
+#volumeControl.d-flex .vertical-slider {
+    opacity: 1;
+}
+
+/* Íconos más pequeños */
+.music-btn i {
+    font-size: 0.8rem;
+}
+
+/* Efecto hover para el contenedor de controles */
+#volumeControl:hover {
+    transform: scale(1.05);
+}
+
+/* Asegurar que el navbar no tape los controles */
+.navbar {
+    z-index: 1040;
+}
