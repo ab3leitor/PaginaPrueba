@@ -1,5 +1,6 @@
 // Navbar que se esconde al hacer scroll y aparece al pasar el mouse arriba
-const navbar = document.querySelector('.navbar');
+
+const navbar = document.querySelector('.navbar.bg-dark');
 let lastScroll = 0;
 let mouseInTopArea = false;
 const topTriggerHeight = 50; // Altura de la zona superior que activa el navbar

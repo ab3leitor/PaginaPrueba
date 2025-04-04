@@ -15,36 +15,38 @@
 </head>
 
 <body>
-    <!-- Barra de Navegación -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <!-- Agrega un navbar-brand para mejor identificación -->
+            <button class="navbar-toggler ms-auto d-lg-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
+                <ul class="navbar-nav w-100 justify-content-lg-center">
+                    <li class="nav-item px-lg-2">
                         <a class="nav-link active" aria-current="page" href="#">
                             <i class="bi bi-house-door me-1"></i> Inicio
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item px-lg-2">
                         <a class="nav-link" href="#sobre-mi">
                             <i class="bi bi-person me-1"></i> Sobre mí
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item px-lg-2">
                         <a class="nav-link" href="#habilidades">
                             <i class="bi bi-code-slash me-1"></i> Habilidades
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item px-lg-2">
                         <a class="nav-link" href="#proyectos">
                             <i class="bi bi-folder me-1"></i> Proyectos
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item px-lg-2">
                         <a class="nav-link" href="#contacto">
                             <i class="bi bi-envelope me-1"></i> Contacto
                         </a>
@@ -52,38 +54,39 @@
                 </ul>
             </div>
         </div>
-    </nav><!-- Control de música -->
+    </nav>
+    <!-- Control de música -->
     <div class="music-controls fixed-top">
         <div class="d-flex flex-column align-items-end me-2" style="margin-top: 60px;">
             <!-- Botón de mute -->
             <button id="muteBtn" class="btn btn-dark rounded-circle mb-1 music-btn" title="Silenciar">
                 <i class="bi bi-volume-up fs-6"></i>
             </button>
-            
+
             <!-- Contenedor de volumen (inicialmente oculto) -->
             <div id="volumeControl" class="d-none flex-column align-items-center mb-1">
                 <!-- Botón de subir volumen -->
                 <button id="volumeUpBtn" class="btn btn-dark rounded-circle music-btn mb-1" title="Subir volumen">
                     <i class="bi bi-plus fs-6"></i>
                 </button>
-                
+
                 <!-- Barra de volumen -->
-                <input type="range" id="volumeSlider" class="form-range vertical-slider" 
-                       min="0" max="1" step="0.1" value="0.1" orient="vertical">
-                
+                <input type="range" id="volumeSlider" class="form-range vertical-slider" min="0" max="1" step="0.1"
+                    value="0.1" orient="vertical">
+
                 <!-- Botón de bajar volumen -->
                 <button id="volumeDownBtn" class="btn btn-dark rounded-circle music-btn mt-1" title="Bajar volumen">
                     <i class="bi bi-dash fs-6"></i>
                 </button>
             </div>
-            
+
             <!-- Botón principal de volumen -->
             <button id="volumeToggleBtn" class="btn btn-dark rounded-circle music-btn" title="Ajustar volumen">
                 <i class="bi bi-volume-down fs-6"></i>
             </button>
         </div>
     </div>
-    
+
     <!-- Elemento de audiF}o (oculto) -->
     <audio id="backgroundMusic" loop>
         <source src="music/musicFondo.mp3" type="audio/mpeg">
