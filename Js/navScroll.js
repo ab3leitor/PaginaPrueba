@@ -3,23 +3,31 @@
 const navbar = document.querySelector('.navbar.bg-dark');
 let lastScroll = 0;
 let mouseInTopArea = false;
-const topTriggerHeight = 50; // Altura de la zona superior que activa el navbar
+let hideTimeout = null; // Nuevo timeout para controlar la visibilidad
+const topTriggerHeight = 50;
+const visibilityDuration = 5000; // 5 segundos
 
 // Control del navbar con scroll
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
     
-    // Mostrar/ocultar navbar basado en dirección del scroll
+    // Resetear timeout cada vez que hay scroll
+    clearTimeout(hideTimeout);
+    
     if (currentScroll <= 0) {
         navbar.classList.add('visible');
     } else if (currentScroll > lastScroll && currentScroll > 100) {
-        // Scroll hacia abajo - ocultar
         if (!mouseInTopArea) {
             navbar.classList.remove('visible');
         }
     } else {
-        // Scroll hacia arriba - mostrar
         navbar.classList.add('visible');
+        // Programar ocultamiento después de 5 segundos
+        hideTimeout = setTimeout(() => {
+            if (!mouseInTopArea && window.pageYOffset > 0) {
+                navbar.classList.remove('visible');
+            }
+        }, visibilityDuration);
     }
     
     lastScroll = currentScroll;

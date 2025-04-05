@@ -1,3 +1,6 @@
+/* ==================== */
+/* VARIABLES GLOBALES */
+/* ==================== */
 :root {
     --metal-dark: #2a2a2a;
     --metal-medium: #4a4a4a;
@@ -6,18 +9,50 @@
     --metal-accent: #1a1a1a;
 }
 
+/* ==================== */
+/* ESTILOS BASE */
+/* ==================== */
 body {
-    background-image: url(../Image/HD-wallpaper-anime-starry-sky-railroad-car-mood-anime-girl-scenic-falling-stars-night-anime.jpg);
-    background-size: cover;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
+    /* ==================== */
+    /* IMAGEN DE FONDO OPTIMIZADA */
+    /* ==================== */
+    background:
+        linear-gradient(rgba(42, 42, 42, 0.658),
+            /* Overlay para mejor contraste */
+            rgba(121, 120, 120, 0.493)),
+        url(../Image/vertical-background-ht8070clsoyyunlz.webp) center/cover no-repeat fixed;
 
-    /* Fallback para imágenes muy grandes */
-    background-color: #2a2a2a;
-    /* Color similar al tono dominante de tu imagen */
+    /* Mejoras de rendimiento */
+    image-rendering: -webkit-optimize-contrast;
+    /* Suavizado en Chrome */
+    image-rendering: crisp-edges;
+    /* Para Firefox */
+    backface-visibility: hidden;
+
+    /* Sistema de colores avanzado */
+    color: #f8f9fa;
+    /* Mejor contraste con fondo oscuro */
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+
+    /* Mejoras de renderizado */
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Fallback optimizado */
+    background-color: #1a1a1a;
+    /* Color más cercano al overlay */
     color: #333;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll;
+        /* Mejor rendimiento en móviles */
+        background-position: 65% center;
+        /* Ajuste para composición móvil */
+    }
 }
 
 body::before {
@@ -42,13 +77,16 @@ body::before {
     background: #555;
 }
 
-/* Barra de Navegación */
-/* Estilos para el navbar */
-/* Estilos para el navbar */
+/* ==================== */
+/* COMPONENTES PRINCIPALES */
+/* ==================== */
+
+/* -------------------- */
+/* NAVBAR */
+/* -------------------- */
 .navbar {
     position: fixed;
     top: -70px;
-    /* Inicialmente oculto */
     width: 100%;
     height: 60px;
     background: #2c3e50;
@@ -95,110 +133,54 @@ body::before {
 .nav-link:hover {
     color: var(--metal-lighter) !important;
 }
-@media (max-width: 991.98px) {
-    /* Fondo completo para el menú desplegable */
-    .navbar-collapse {
-        background-color: #2c3e50;
-        padding: 1rem;
-        margin-top: 0.5rem;
-        border-radius: 0.5rem;
-    }
-    
-    /* Espaciado entre items */
-    .navbar-nav .nav-item {
-        padding: 0.75rem 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .navbar-nav .nav-item:last-child {
-        border-bottom: none;
-    }
-    
-    /* Alinear mejor los íconos */
-    .navbar-nav .bi {
-        margin-right: 0.75rem;
-    }
-    
-    /* Ajustar el botón toggler */
-    .navbar-toggler {
-        background-color: black;       /* Fondo negro */
-        border: 1px solid #f0f0f0 !important;
-        border-radius: 10px;  /* Borde blanco de 2px (ajusta el grosor según prefieras) */
-        margin-left: auto;             /* Alineación */
-        padding: 0.5rem;    /* Esquinas ligeramente redondeadas */
-        transition: all 0.3s ease;    /* Transición suave para efectos hover */
-    }
-    
-.navbar-toggler:hover {
-    background-color: #333;       /* Fondo un poco más claro al pasar el mouse */
-    border-color: #fff;           /* Borde blanco mantenido */
-}
 
-/* Estilo para el icono hamburguesa */
-.navbar-toggler .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-    
-    /* Ocultar el navbar fijo en móvil cuando no está expandido */
-    .navbar:not(.show) {
-        background-color: transparent !important;
-        box-shadow: none !important;
-    }
-}
-
-/* Secciones con transparencia oscura */
+/* -------------------- */
+/* SECCIONES */
+/* -------------------- */
 section {
     background-color: rgba(30, 30, 30, 0.849);
     color: #f0f0f0;
-    padding: 80px 0; /* Aumenté el padding vertical */
-    margin: 30px auto; /* Más margen exterior */
-    width: 95%; /* Ancho ligeramente reducido */
-    border-radius: 15px; /* Bordes más redondeados */
+    padding: 80px 0;
+    margin: 30px auto;
+    width: 95%;
+    border-radius: 15px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* Contenido de la sección */
-.section-content {
-    padding: 0 40px;
-    /* Espaciado horizontal interno */
-    margin: 0 auto;
+.section-title {
+    position: relative;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
 }
 
-/* Efecto hover más pronunciado */
-section:hover {
-    transform: translateY(-5px);
-    /* Efecto de levitación */
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--metal-dark), var(--metal-medium));
+    border-radius: 3px;
+}
+
+.section-content {
+    padding: 0 40px;
+    margin: 0 auto;
 }
 
 section h2 {
     color: #ffffff;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
     margin-bottom: 30px;
-    /* Más espacio debajo del título */
     padding-bottom: 15px;
-    /* Espacio para la línea decorativa */
     position: relative;
     left: 0;
-    /* Eliminamos el desplazamiento lateral */
     transform: none;
-    /* Eliminamos transformación previa */
     width: 100%;
     text-align: center;
-    /* Centrado opcional */
-}
-
-section h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 25%;
-    /* La línea comienza al 25% */
-    width: 50%;
-    /* Ocupa solo el 50% del ancho */
-    height: 2px;
-    background: rgba(42, 42, 42, 0.3);
 }
 
 section p {
@@ -206,34 +188,50 @@ section p {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-/* Versión para móviles */
-@media (max-width: 768px) {
-    section {
-        padding: 50px 0;
-        width: 90%;
-        margin: 20px auto;
-    }
-
-    .section-container {
-        padding: 0 20px;
-    }
-
-    section h2 {
-        margin-bottom: 20px;
-    }
+/* Líneas divisorias para títulos de sección */
+#sobre-mi .text-center,
+#habilidades h2,
+#herramientas h2,
+#proyectos h2,
+#contacto h2 {
+    position: relative;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
 }
 
-
-/* Sobre Mí */
-.profile-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    border: 3px solid var(--metal-medium);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+#sobre-mi .text-center::after,
+#habilidades h2::after,
+#herramientas h2::after,
+#proyectos h2::after,
+#contacto h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    border-radius: 2px;
 }
 
-/* Efectos hover unificados para cards */
+/* ==================== */
+/* COMPONENTES ESPECÍFICOS */
+/* ==================== */
+
+/* -------------------- */
+/* CARDS (Habilidades y Herramientas) */
+/* -------------------- */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-md-3 {
+    display: flex;
+    padding: 10px;
+}
+
 .skill-card,
 .tool-card {
     background-color: rgba(50, 50, 50, 0.5);
@@ -242,6 +240,63 @@ section p {
     position: relative;
     overflow: hidden;
     z-index: 1;
+    width: 100%;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-sizing: border-box;
+}
+
+.card-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.skill-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: var(--metal-light);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.skill-card h4,
+.tool-card h4 {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    font-weight: 600;
+    line-height: 1.3;
+    width: 100%;
+}
+
+.skill-card p,
+.tool-card p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin: 0;
+    line-height: 1.4;
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Efectos hover para cards */
+.skill-card:hover,
+.tool-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 .skill-card::before,
@@ -258,33 +313,39 @@ section p {
     transition: opacity 0.4s ease;
 }
 
-.skill-card:hover,
-.tool-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-    color: white !important;
-    border-color: transparent !important;
-}
-
 .skill-card:hover::before,
 .tool-card:hover::before {
     opacity: 1;
 }
 
-.skill-card:hover .skill-icon,
-.tool-card:hover .skill-icon,
-.skill-card:hover h4,
-.tool-card:hover h4,
-.skill-card:hover p,
-.tool-card:hover p {
+.skill-card:hover *,
+.tool-card:hover * {
     color: white !important;
 }
 
-/* Estilos para el carrusel e indicadores */
+.card-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.skill-card:hover .card-glow,
+.tool-card:hover .card-glow {
+    opacity: 1;
+}
+
+/* -------------------- */
+/* CARRUSEL */
+/* -------------------- */
 .carousel-container {
     position: relative;
     height: 500px;
-    /* Ajusta según necesites */
 }
 
 .carousel-external-indicators {
@@ -314,18 +375,6 @@ section p {
     transform: scale(1.3);
 }
 
-/* Iconos de redes sociales */
-footer a {
-    transition: all 0.3s ease;
-    display: inline-block;
-}
-
-footer a:hover {
-    transform: translateY(-3px);
-    color: var(--metal-lighter) !important;
-}
-
-/* Carrusel */
 .carousel-item img {
     height: 400px;
     object-fit: cover;
@@ -338,7 +387,9 @@ footer a:hover {
     padding: 15px;
 }
 
-/* Formulario */
+/* -------------------- */
+/* FORMULARIO */
+/* -------------------- */
 .form-control {
     border: 1px solid var(--metal-light);
 }
@@ -358,31 +409,33 @@ footer a:hover {
     border-color: var(--metal-dark);
 }
 
-/* Pie de Página */
+/* -------------------- */
+/* FOOTER */
+/* -------------------- */
 footer {
     background-color: var(--metal-dark) !important;
     border-top: 3px solid var(--metal-medium);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    section {
-        padding: 40px 0;
-    }
-
-    .skill-card {
-        margin-bottom: 15px;
-    }
+footer a {
+    transition: all 0.3s ease;
+    display: inline-block;
 }
 
-/* Controles de música */
+footer a:hover {
+    transform: translateY(-3px);
+    color: var(--metal-lighter) !important;
+}
+
+/* -------------------- */
+/* CONTROLES DE MÚSICA */
+/* -------------------- */
 .music-controls {
     z-index: 1030;
     right: 0;
     transition: all 0.3s ease;
 }
 
-/* Estilo base de los botones (más pequeños) */
 .music-btn {
     width: 30px;
     height: 30px;
@@ -396,14 +449,12 @@ footer {
     transform: scale(0.9);
 }
 
-/* Efecto hover - los botones crecen */
 .music-btn:hover {
     transform: scale(1.1);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     z-index: 2;
 }
 
-/* Barra de volumen vertical */
 .vertical-slider {
     -webkit-appearance: slider-vertical;
     width: 30px;
@@ -414,19 +465,88 @@ footer {
     transition: opacity 0.3s ease;
 }
 
-/* Mostrar barra cuando el contenedor está visible */
 #volumeControl.d-flex .vertical-slider {
     opacity: 1;
 }
 
-/* Íconos más pequeños */
 .music-btn i {
     font-size: 0.8rem;
 }
 
-/* Efecto hover para el contenedor de controles */
 #volumeControl:hover {
     transform: scale(1.05);
+}
+
+/* ==================== */
+/* MEDIA QUERIES */
+/* ==================== */
+@media (max-width: 991.98px) {
+
+    /* Navbar en móviles */
+    .navbar-collapse {
+        background-color: #2c3e50;
+        padding: 1rem;
+        margin-top: 0.5rem;
+        border-radius: 0.5rem;
+    }
+
+    .navbar-nav .nav-item {
+        padding: 0.75rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .navbar-nav .nav-item:last-child {
+        border-bottom: none;
+    }
+
+    .navbar-nav .bi {
+        margin-right: 0.75rem;
+    }
+
+    .navbar-toggler {
+        background-color: black;
+        border: 1px solid #f0f0f0 !important;
+        border-radius: 10px;
+        margin-left: auto;
+        padding: 0.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .navbar-toggler:hover {
+        background-color: #333;
+        border-color: #fff;
+    }
+
+    .navbar-toggler .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    .navbar:not(.show) {
+        background-color: transparent !important;
+        box-shadow: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Ajustes generales para móviles */
+    section {
+        padding: 50px 0;
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    .section-container {
+        padding: 0 20px;
+    }
+
+    section h2 {
+        margin-bottom: 20px;
+    }
+
+    .skill-card {
+        margin-bottom: 15px;
+    }
 }
 
 /* Asegurar que el navbar no tape los controles */
