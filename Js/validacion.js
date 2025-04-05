@@ -1,11 +1,13 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // 1. Configuración inicial
     const form = document.getElementById('contactForm');
     const campos = {
         nombre: document.getElementById('nombre'),
         email: document.getElementById('email'),
         telefono: document.getElementById('telefono'),
-        mensaje: document.getElementById('mensaje')
+        asunto: document.getElementById('asunto'), // Nuevo campo añadido
+        mensaje: document.getElementById('mensaje'),
+        terminos: document.getElementById('terminos')
     };
     const contador = document.getElementById('contador');
 
@@ -35,11 +37,17 @@ document.addEventListener('DOMContentLoaded', function() {
             minLength: 'Mínimo 6 dígitos',
             maxLength: 'Máximo 15 dígitos (incluyendo código de país)'
         },
+        asunto: {
+            requerido: 'Por favor selecciona un asunto'
+        },
         mensaje: {
             requerido: 'El mensaje es requerido',
             soloEspacios: 'No puede contener solo espacios',
             minLength: 'Mínimo 10 caracteres válidos (sin contar espacios)',
             maxLength: 'Máximo 500 caracteres'
+        },
+        terminos: {
+            requerido: 'Debes aceptar los términos y condiciones'
         }
     };
 
@@ -48,11 +56,11 @@ document.addEventListener('DOMContentLoaded', function() {
         // Configurar eventos para cada campo
         Object.entries(campos).forEach(([nombre, campo]) => {
             if (campo) {
-                campo.addEventListener('input', function() {
+                campo.addEventListener('input', function () {
                     this.classList.remove('is-valid', 'is-invalid');
                     validarCampo(nombre, this);
                 });
-                campo.addEventListener('blur', function() {
+                campo.addEventListener('blur', function () {
                     validarCampo(nombre, this);
                 });
             }
@@ -64,8 +72,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 5. Función de validación unificada
     function validarCampo(tipo, campo) {
-        const valor = campo.value.trim();
-        resetearEstado(campo);
+        const valor = campo.type === 'checkbox' ? campo.checked :
+            campo.type === 'select-one' ? campo.value :
+                campo.value.trim();
 
         // Validación para campo vacío
         if (campo.required && !valor) {
@@ -74,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Validaciones específicas para cada tipo de campo
-        switch(tipo) {
+        switch (tipo) {
             case 'nombre':
                 if (valor.length < 3) {
                     mostrarError(campo, mensajesError.nombre.minLength);
@@ -114,6 +123,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
                 break;
+            case 'asunto':
+                // Para select solo necesitamos validar que tenga un valor seleccionado
+                if (valor === "" || campo.selectedIndex === 0) {
+                    mostrarError(campo, mensajesError.asunto.requerido);
+                    return false;
+                }
+                break;
 
             case 'mensaje':
                 if (!patrones.noEspacios.test(valor)) {
@@ -133,6 +149,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (contador) {
                     contador.textContent = valor.length;
                     actualizarColorContador(valor.length);
+                }
+                break;
+            case 'terminos':
+                // Para checkbox solo validamos que esté marcado
+                if (!valor) {
+                    mostrarError(campo, mensajesError.terminos.requerido);
+                    return false;
                 }
                 break;
         }
@@ -156,13 +179,13 @@ document.addEventListener('DOMContentLoaded', function() {
     function mostrarError(campo, mensaje) {
         campo.classList.add('is-invalid');
         let feedback = campo.nextElementSibling;
-        
+
         if (!feedback || !feedback.classList.contains('invalid-feedback')) {
             feedback = document.createElement('div');
             feedback.className = 'invalid-feedback';
             campo.parentNode.insertBefore(feedback, campo.nextSibling);
         }
-        
+
         feedback.textContent = mensaje;
         feedback.style.display = 'block';
     }
@@ -177,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function actualizarColorContador(longitud) {
         if (!contador) return;
-        
+
         contador.classList.remove('text-warning', 'text-danger');
         if (longitud > 450) contador.classList.add('text-warning');
         if (longitud >= 500) {
@@ -189,16 +212,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // 7. Manejo del envío del formulario mejorado
     function enviarFormulario(e) {
         e.preventDefault();
-        
+
         let formularioValido = true;
-        
+
         // Validar todos los campos
         Object.entries(campos).forEach(([nombre, campo]) => {
             if (campo && !validarCampo(nombre, campo)) {
                 formularioValido = false;
             }
         });
-        
+
         if (formularioValido) {
             mostrarFeedback('¡Formulario enviado con éxito!', 'success');
             form.reset();
@@ -229,7 +252,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Eliminar feedback anterior si existe
         const anterior = document.querySelector('.form-feedback');
         if (anterior) anterior.remove();
-        
+
         // Crear nuevo feedback
         const feedback = document.createElement('div');
         feedback.className = `form-feedback alert alert-${tipo} mt-3 fade show`;
@@ -237,10 +260,10 @@ document.addEventListener('DOMContentLoaded', function() {
             ${mensaje}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         `;
-        
+
         // Insertar en el DOM
         form.parentNode.insertBefore(feedback, form.nextSibling);
-        
+
         // Auto-ocultar después de 5 segundos
         setTimeout(() => {
             feedback.classList.remove('show');
