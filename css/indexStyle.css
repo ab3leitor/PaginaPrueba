@@ -16,38 +16,42 @@ body {
     /* ==================== */
     /* IMAGEN DE FONDO OPTIMIZADA */
     /* ==================== */
-    background: 
-        linear-gradient(
-            rgba(42, 42, 42, 0.658),  /* Overlay para mejor contraste */
-            rgba(121, 120, 120, 0.493)
-        ),
-        url(../Image/vertical-background-ht8070clsoyyunlz.webp)
-        center/cover no-repeat fixed;
-    
+    background:
+        linear-gradient(rgba(42, 42, 42, 0.658),
+            /* Overlay para mejor contraste */
+            rgba(121, 120, 120, 0.493)),
+        url(../Image/vertical-background-ht8070clsoyyunlz.webp) center/cover no-repeat fixed;
+
     /* Mejoras de rendimiento */
-    image-rendering: -webkit-optimize-contrast;  /* Suavizado en Chrome */
-    image-rendering: crisp-edges;               /* Para Firefox */
+    image-rendering: -webkit-optimize-contrast;
+    /* Suavizado en Chrome */
+    image-rendering: crisp-edges;
+    /* Para Firefox */
     backface-visibility: hidden;
-    
+
     /* Sistema de colores avanzado */
-    color: #f8f9fa;  /* Mejor contraste con fondo oscuro */
+    color: #f8f9fa;
+    /* Mejor contraste con fondo oscuro */
     font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-    
+
     /* Mejoras de renderizado */
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    
+
     /* Fallback optimizado */
-    background-color: #1a1a1a;  /* Color más cercano al overlay */
+    background-color: #1a1a1a;
+    /* Color más cercano al overlay */
     color: #333;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 @media (max-width: 768px) {
     body {
-        background-attachment: scroll;  /* Mejor rendimiento en móviles */
-        background-position: 65% center;  /* Ajuste para composición móvil */
+        background-attachment: scroll;
+        /* Mejor rendimiento en móviles */
+        background-position: 65% center;
+        /* Ajuste para composición móvil */
     }
 }
 
@@ -137,11 +141,22 @@ section {
     background-color: rgba(30, 30, 30, 0.849);
     color: #f0f0f0;
     padding: 80px 0;
-    margin: 30px ;
+    margin: 30px;
     width: 100%;
-    border-radius: 15px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
     border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+#proyectos {
+    background-color: transparent !important;
+    /* Elimina el fondo */
+    box-shadow: none !important;
+    /* Opcional: quita la sombra si lo prefieres */
+    border: none !important;
+    /* Opcional: quita el borde */
+    padding: 80px 0;
+    margin: 30px auto;
+    width: 100%;
 }
 
 .section-title {
@@ -195,7 +210,8 @@ section p {
     margin-bottom: 20px;
 }
 
-#sobre-mi .text-center::after,
+#sobre-mi h2::after,
+#sobre-mi p::after,
 #habilidades h2::after,
 #herramientas h2::after,
 #proyectos h2::after,
@@ -228,112 +244,146 @@ section p {
     padding: 10px;
 }
 
-.skill-card,
-.tool-card {
-    background-color: rgba(50, 50, 50, 0.5);
-    color: #fff;
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-    width: 100%;
-    min-height: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 25px 15px;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-sizing: border-box;
-}
-
-.card-content {
-    width: 100%;
+/* ==================== */
+/* ESTILOS COMPARTIDOS */
+/* ==================== */
+.skill-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
-.skill-icon {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-    color: var(--metal-light);
-    transition: all 0.3s ease;
-    flex-shrink: 0;
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.skill-card h4,
-.tool-card h4 {
-    font-size: 1.2rem;
-    margin: 10px 0;
-    font-weight: 600;
-    line-height: 1.3;
-    width: 100%;
-}
-
-.skill-card p,
-.tool-card p {
-    font-size: 0.9rem;
-    opacity: 0.8;
-    margin: 0;
-    line-height: 1.4;
-    width: 100%;
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Efectos hover para cards */
-.skill-card:hover,
-.tool-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-}
-
-.skill-card::before,
-.tool-card::before {
+.skill-card::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--metal-dark), var(--metal-medium));
+    background: linear-gradient(135deg, rgba(0, 123, 255, 0.1), transparent);
     z-index: -1;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-.skill-card:hover::before,
-.tool-card:hover::before {
-    opacity: 1;
-}
-
-.skill-card:hover *,
-.tool-card:hover * {
-    color: white !important;
-}
-
-.card-glow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
-.skill-card:hover .card-glow,
-.tool-card:hover .card-glow {
+.skill-card:hover::before {
     opacity: 1;
+}
+
+/* ==================== */
+/* SKILL CARDS (Habilidades) */
+/* ==================== */
+.skill-card {
+    border: 1px solid rgba(0, 123, 255, 0.3);
+    /* Borde azul */
+}
+
+.skill-card:hover {
+    border-color: rgba(0, 123, 255, 0.6);
+}
+
+.skill-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--bs-primary);
+    transition: transform 0.3s ease;
+}
+
+.skill-card:hover .skill-icon {
+    transform: scale(1.1);
+    color: #fff;
+}
+
+.skill-title {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.skill-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+}
+
+.skill-progress {
+    height: 100%;
+    background: var(--bs-primary);
+    border-radius: 4px;
+    transition: width 1s ease;
+}
+
+.skill-percent {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* ==================== */
+/* ANIMACIONES */
+/* ==================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.skill-col {
+    animation: fadeInUp 0.5s ease forwards;
+    opacity: 0;
+}
+
+/* Animación escalonada para skills */
+.skill-col:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.skill-col:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.skill-col:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+/* ==================== */
+/* RESPONSIVE */
+/* ==================== */
+@media (max-width: 768px) {
+    .skill-card {
+        padding: 1.25rem;
+    }
+
+    .skill-icon {
+        font-size: 2rem;
+    }
+
+    .skill-title {
+        font-size: 1rem;
+    }
 }
 
 /* -------------------- */
@@ -361,7 +411,7 @@ section p {
     height: 8px;
     border-radius: 10%;
     border: none;
-    background: rgba(112, 111, 111, 0.5);
+    background: rgba(255, 255, 255, 0.5);
     cursor: pointer;
     transition: all 0.3s;
 }
@@ -477,6 +527,7 @@ footer a:hover {
 /* MEDIA QUERIES */
 /* ==================== */
 @media (max-width: 991.98px) {
+
     /* Navbar en móviles */
     .navbar-collapse {
         background-color: #2c3e50;
@@ -523,6 +574,7 @@ footer a:hover {
 }
 
 @media (max-width: 768px) {
+
     /* Ajustes generales para móviles */
     section {
         padding: 50px 0;
@@ -546,4 +598,50 @@ footer a:hover {
 /* Asegurar que el navbar no tape los controles */
 .navbar {
     z-index: 1040;
+}
+
+.tool-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.tool-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--bs-success);
+    transition: transform 0.3s ease;
+}
+
+.tool-card:hover .tool-icon {
+    transform: rotate(15deg);
+    color: #fff;
+}
+
+.tool-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.tool-category {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: auto;
+    margin-bottom: 0;
 }
