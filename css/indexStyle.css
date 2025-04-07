@@ -645,53 +645,91 @@ footer a:hover {
     margin-top: auto;
     margin-bottom: 0;
 }
+
 /* Contenedor principal del flip */
+/* Modificación para efecto hover en lugar de click */
 .flip-container {
     margin: auto;
     padding-top: 30px;
-    width: 300px; /* Mismo ancho que tu imagen */
-    height: 300px; /* Mismo alto que tu imagen */
-    perspective: 1000px; /* Profundidad 3D */
-    cursor: pointer;
-  }
-  
-  /* Contenedor interno que gira */
-  .flip-inner {
+    width: 300px;
+    height: 400px;
+    perspective: 1000px;
+}
+
+.flip-container:hover .flip-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-inner {
     position: relative;
     width: 100%;
     height: 100%;
     transition: transform 0.6s;
-    transform-style: preserve-3d; /* Mantiene el efecto 3D */
-  }
-  
-  /* Cuando se hace clic, rota 180° */
-  .flip-container.flipped .flip-inner {
-    transform: rotateY(180deg);
-  }
-  
-  /* Estilo para ambas caras (frontal y trasera) */
-  .flip-front, .flip-back {
+    transform-style: preserve-3d;
+}
+
+.flip-front,
+.flip-back {
     position: absolute;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden; /* Oculta la parte trasera al girar */
+    backface-visibility: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  /* La parte trasera ya está rotada 180° por defecto */
-  .flip-back {
+}
+
+.flip-back {
     transform: rotateY(180deg);
-  }
-  /* Contenedor de flechas */
-.click-hint-arrows {
+    background: linear-gradient(135deg, #343a40 0%, #212529 100%);
+    border-radius: 10px;
+}
+
+/* Estilo para la imagen flotante */
+.floating-img {
+    width: 280px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    border: 2px solid #fff;
+    transition: all 0.5s ease;
+}
+
+/* Botón de descarga mejorado */
+.download-btn {
+
     position: absolute;
-    width: 350px; /* Ajusta según el tamaño de tu imagen */
-    height: 350px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none; /* Permite clics en la imagen */
-  }
-  
+    bottom: 130px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: anchor-center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.download-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.download-icon {
+    transition: all 0.3s ease;
+}
+
+.download-btn:hover .download-icon {
+    animation: bounce 0.6s infinite alternate;
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-5px);
+    }
+}
