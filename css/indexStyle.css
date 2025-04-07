@@ -645,3 +645,53 @@ footer a:hover {
     margin-top: auto;
     margin-bottom: 0;
 }
+/* Contenedor principal del flip */
+.flip-container {
+    margin: auto;
+    padding-top: 30px;
+    width: 300px; /* Mismo ancho que tu imagen */
+    height: 300px; /* Mismo alto que tu imagen */
+    perspective: 1000px; /* Profundidad 3D */
+    cursor: pointer;
+  }
+  
+  /* Contenedor interno que gira */
+  .flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d; /* Mantiene el efecto 3D */
+  }
+  
+  /* Cuando se hace clic, rota 180° */
+  .flip-container.flipped .flip-inner {
+    transform: rotateY(180deg);
+  }
+  
+  /* Estilo para ambas caras (frontal y trasera) */
+  .flip-front, .flip-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Oculta la parte trasera al girar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* La parte trasera ya está rotada 180° por defecto */
+  .flip-back {
+    transform: rotateY(180deg);
+  }
+  /* Contenedor de flechas */
+.click-hint-arrows {
+    position: absolute;
+    width: 350px; /* Ajusta según el tamaño de tu imagen */
+    height: 350px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none; /* Permite clics en la imagen */
+  }
+  

@@ -130,8 +130,26 @@
                 </p>
             </div>
             <div class="col-md-6 text-center">
-                <img src="Image/ChatGPT Image 4 abr 2025, 17_29_47.png" alt="Foto de perfil" class="profile-img"
-                    style="max-width: 300px; border-radius: 10px;">
+                <div class="flip-container" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-inner">
+                        <!-- Parte frontal (tu imagen normal) -->
+                        <div class="flip-front">
+                            <img src="Image/ChatGPT Image 4 abr 2025, 17_29_47.png" alt="Foto de perfil"
+                                class="profile-img shadow" style="max-width: 300px;">
+                        </div>
+                        <!-- Parte trasera (puede ser otra imagen o texto) -->
+                        <div class="flip-back">
+                            <img src="Image/ChatGPT Image 4 abr 2025, 17_29_47.png" alt="Foto de perfil volteada"
+                                class="profile-img shadow" style="max-width: 300px; filter: grayscale(100%);">
+                        </div>
+                    </div>
+                </div>
+                <div class="click-hint-arrows">
+                    <div class="arrow arrow-top"></div>
+                    <div class="arrow arrow-right"></div>
+                    <div class="arrow arrow-bottom"></div>
+                    <div class="arrow arrow-left"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -144,7 +162,7 @@
             </div>
 
             <div class="row g-4 justify-content-center">
-                <!-- Tarjeta de habilidad -->
+                <!-- HTML5 -->
                 <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                     <div class="skill-card h-100">
                         <div class="skill-icon">
@@ -157,100 +175,130 @@
                         <span class="skill-percent">95%</span>
                     </div>
                 </div>
+
+                <!-- CSS3 -->
                 <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                     <div class="skill-card h-100">
                         <div class="skill-icon">
-                            <i class="bi bi-filetype-html"></i>
+                            <i class="bi bi-filetype-css"></i>
                         </div>
-                        <h3 class="skill-title">HTML5</h3>
+                        <h3 class="skill-title">CSS3</h3>
                         <div class="skill-bar">
-                            <div class="skill-progress" style="width: 95%"></div>
+                            <div class="skill-progress" style="width: 90%"></div>
                         </div>
-                        <span class="skill-percent">95%</span>
+                        <span class="skill-percent">90%</span>
                     </div>
                 </div>
+
+                <!-- JavaScript -->
                 <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                     <div class="skill-card h-100">
                         <div class="skill-icon">
-                            <i class="bi bi-filetype-html"></i>
+                            <i class="bi bi-filetype-js"></i>
                         </div>
-                        <h3 class="skill-title">HTML5</h3>
+                        <h3 class="skill-title">JavaScript</h3>
                         <div class="skill-bar">
-                            <div class="skill-progress" style="width: 95%"></div>
+                            <div class="skill-progress" style="width: 85%"></div>
                         </div>
-                        <span class="skill-percent">95%</span>
+                        <span class="skill-percent">85%</span>
                     </div>
                 </div>
+
+                <!-- React -->
                 <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                     <div class="skill-card h-100">
                         <div class="skill-icon">
-                            <i class="bi bi-filetype-html"></i>
+                            <i class="bi bi-react"></i>
                         </div>
-                        <h3 class="skill-title">HTML5</h3>
+                        <h3 class="skill-title">React</h3>
                         <div class="skill-bar">
-                            <div class="skill-progress" style="width: 95%"></div>
+                            <div class="skill-progress" style="width: 80%"></div>
                         </div>
-                        <span class="skill-percent">95%</span>
+                        <span class="skill-percent">80%</span>
                     </div>
                 </div>
+
+                <!-- Node.js -->
                 <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                     <div class="skill-card h-100">
                         <div class="skill-icon">
-                            <i class="bi bi-filetype-html"></i>
+                            <i class="bi bi-node-plus"></i>
                         </div>
-                        <h3 class="skill-title">HTML5</h3>
+                        <h3 class="skill-title">Node.js</h3>
                         <div class="skill-bar">
-                            <div class="skill-progress" style="width: 95%"></div>
+                            <div class="skill-progress" style="width: 75%"></div>
                         </div>
-                        <span class="skill-percent">95%</span>
+                        <span class="skill-percent">75%</span>
                     </div>
                 </div>
-                <div class="col-12 col-md-4 col-lg-3 col-xl-2">
+
+                <!-- Bootstrap -->
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                     <div class="skill-card h-100">
                         <div class="skill-icon">
-                            <i class="bi bi-filetype-html"></i>
+                            <i class="bi bi-bootstrap"></i>
                         </div>
-                        <h3 class="skill-title">HTML5</h3>
+                        <h3 class="skill-title">Bootstrap</h3>
                         <div class="skill-bar">
-                            <div class="skill-progress" style="width: 95%"></div>
+                            <div class="skill-progress" style="width: 90%"></div>
                         </div>
-                        <span class="skill-percent">95%</span>
+                        <span class="skill-percent">90%</span>
                     </div>
                 </div>
-                <div class="col-12 col-md-4 col-lg-3 col-xl-2">
+
+                <!-- Git -->
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                     <div class="skill-card h-100">
                         <div class="skill-icon">
-                            <i class="bi bi-filetype-html"></i>
+                            <i class="bi bi-git"></i>
                         </div>
-                        <h3 class="skill-title">HTML5</h3>
+                        <h3 class="skill-title">Git</h3>
                         <div class="skill-bar">
-                            <div class="skill-progress" style="width: 95%"></div>
+                            <div class="skill-progress" style="width: 85%"></div>
                         </div>
-                        <span class="skill-percent">95%</span>
+                        <span class="skill-percent">85%</span>
                     </div>
                 </div>
-                <div class="col-12 col-md-4 col-lg-3 col-xl-2">
+
+                <!-- MongoDB -->
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                     <div class="skill-card h-100">
                         <div class="skill-icon">
-                            <i class="bi bi-filetype-html"></i>
+                            <i class="bi bi-database"></i>
                         </div>
-                        <h3 class="skill-title">HTML5</h3>
+                        <h3 class="skill-title">MongoDB</h3>
                         <div class="skill-bar">
-                            <div class="skill-progress" style="width: 95%"></div>
+                            <div class="skill-progress" style="width: 70%"></div>
                         </div>
-                        <span class="skill-percent">95%</span>
+                        <span class="skill-percent">70%</span>
                     </div>
                 </div>
-                <div class="col-12 col-md-4 col-lg-3 col-xl-2">
+
+                <!-- Express -->
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                     <div class="skill-card h-100">
                         <div class="skill-icon">
-                            <i class="bi bi-filetype-html"></i>
+                            <i class="bi bi-server"></i>
                         </div>
-                        <h3 class="skill-title">HTML5</h3>
+                        <h3 class="skill-title">Express</h3>
                         <div class="skill-bar">
-                            <div class="skill-progress" style="width: 95%"></div>
+                            <div class="skill-progress" style="width: 75%"></div>
                         </div>
-                        <span class="skill-percent">95%</span>
+                        <span class="skill-percent">75%</span>
+                    </div>
+                </div>
+
+                <!-- TypeScript -->
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                    <div class="skill-card h-100">
+                        <div class="skill-icon">
+                            <i class="bi bi-filetype-ts"></i>
+                        </div>
+                        <h3 class="skill-title">TypeScript</h3>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 65%"></div>
+                        </div>
+                        <span class="skill-percent">65%</span>
                     </div>
                 </div>
             </div>
@@ -466,8 +514,9 @@
                 <p>&copy; 2023 Mi Portafolio. Todos los derechos reservados.</p>
             </div>
             <div class="text-center">
-                <a href="https://www.facebook.com/abel.arriagadaurriola/" class="text-white mx-3" style="color: #1877f2 !important;"><i
-                        class="bi bi-facebook fs-4"></i></a> <!-- Facebook azul oficial -->
+                <a href="https://www.facebook.com/abel.arriagadaurriola/" class="text-white mx-3"
+                    style="color: #1877f2 !important;"><i class="bi bi-facebook fs-4"></i></a>
+                <!-- Facebook azul oficial -->
                 <a href="#" class="text-white mx-3" style="color: #1da1f2 !important;"><i
                         class="bi bi-twitter fs-4"></i></a> <!-- Twitter azul oficial -->
                 <a href="#" class="text-white mx-3" style="color: #0a66c2 !important;"><i
