@@ -732,4 +732,6 @@ footer a:hover {
     to {
         transform: translateY(-5px);
     }
+}#contacto {
+    padding-bottom: 100px; /* Ajusta este valor según la altura de tu footer */
 }
